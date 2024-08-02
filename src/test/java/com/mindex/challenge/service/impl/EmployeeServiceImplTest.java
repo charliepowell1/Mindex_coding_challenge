@@ -1,5 +1,6 @@
 package com.mindex.challenge.service.impl;
 
+import com.mindex.challenge.data.Compensation;
 import com.mindex.challenge.data.Employee;
 import com.mindex.challenge.service.EmployeeService;
 import org.junit.Before;
@@ -41,7 +42,7 @@ public class EmployeeServiceImplTest {
     }
 
     @Test
-    public void testCreateReadUpdate() {
+    public void testCreateReadUpdateEmployee() {
         Employee testEmployee = new Employee();
         testEmployee.setFirstName("John");
         testEmployee.setLastName("Doe");
@@ -76,11 +77,30 @@ public class EmployeeServiceImplTest {
 
         assertEmployeeEquivalence(readEmployee, updatedEmployee);
     }
+    
+    @Test
+    public void testCreateReadCompensation() {
+    	Compensation testComp = new Compensation();
+    	testComp.setEffectiveDate("01/01/2024");
+    	testComp.setSalary("$1");
+    	
+    	Compensation createdComp = restTemplate.postForEntity(employeeUrl, testComp, Compensation.class).getBody();
+    	
+    	assertNotNull(createdComp.getEmployeeId());
+        assertCompensationEquivalence(testComp, createdComp);
+    }
 
     private static void assertEmployeeEquivalence(Employee expected, Employee actual) {
         assertEquals(expected.getFirstName(), actual.getFirstName());
         assertEquals(expected.getLastName(), actual.getLastName());
         assertEquals(expected.getDepartment(), actual.getDepartment());
         assertEquals(expected.getPosition(), actual.getPosition());
+        assertEquals(expected.getCompensation(), actual.getCompensation());
+    }
+    
+    private static void assertCompensationEquivalence(Compensation expected, Compensation actual)
+    {
+    	actual.setEffectiveDate(null);
+    	assertEquals(expected, actual);
     }
 }

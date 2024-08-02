@@ -2,6 +2,8 @@ package com.mindex.challenge.data;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Employee {
     private String employeeId;
     private String firstName;
@@ -9,9 +11,20 @@ public class Employee {
     private String position;
     private String department;
     private List<Employee> directReports;
+    private Compensation compensation;
 
-    public Employee() {
+
+	public Employee() {
+		
     }
+	
+	public Compensation getCompensation() {
+		return compensation;
+	}
+
+	public void setCompensation(Compensation compensation) {
+		this.compensation = compensation;
+	}
 
     public String getEmployeeId() {
         return employeeId;
