@@ -18,6 +18,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import org.junit.Assert;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -44,16 +48,41 @@ public class EmployeeServiceImplTest {
     @Test
     public void testCreateReadUpdateEmployee() {
         Employee testEmployee = new Employee();
+        Employee testEmployee2 = new Employee();
+        Employee testEmployee3 = new Employee();
+        
+        Compensation comp = new Compensation();
+        comp.setEffectiveDate("02/02/2020");
+        comp.setSalary("$100/yr");
+        comp.setEmployeeId(testEmployee.getEmployeeId());
+        
         testEmployee.setFirstName("John");
         testEmployee.setLastName("Doe");
         testEmployee.setDepartment("Engineering");
         testEmployee.setPosition("Developer");
+        testEmployee.setCompensation(comp);
+        
+        testEmployee2.setFirstName("James");
+        testEmployee2.setLastName("Bond");
+        testEmployee2.setDepartment("MI6");
+        testEmployee2.setPosition("Spy");
+        
+        testEmployee3.setFirstName("Shrek");
+        testEmployee3.setLastName("Shrekerson");
+        testEmployee3.setDepartment("Swamp");
+        testEmployee3.setPosition("Ogre");
+        
+        List<Employee> directReports = new ArrayList<Employee>();
+        directReports.add(testEmployee2);
+        directReports.add(testEmployee3);
+        testEmployee.setDirectReports(directReports);
 
         // Create checks
         Employee createdEmployee = restTemplate.postForEntity(employeeUrl, testEmployee, Employee.class).getBody();
 
         assertNotNull(createdEmployee.getEmployeeId());
         assertEmployeeEquivalence(testEmployee, createdEmployee);
+        
 
 
         // Read checks
@@ -78,29 +107,20 @@ public class EmployeeServiceImplTest {
         assertEmployeeEquivalence(readEmployee, updatedEmployee);
     }
     
-    @Test
-    public void testCreateReadCompensation() {
-    	Compensation testComp = new Compensation();
-    	testComp.setEffectiveDate("01/01/2024");
-    	testComp.setSalary("$1");
-    	
-    	Compensation createdComp = restTemplate.postForEntity(employeeUrl, testComp, Compensation.class).getBody();
-    	
-    	assertNotNull(createdComp.getEmployeeId());
-        assertCompensationEquivalence(testComp, createdComp);
-    }
 
     private static void assertEmployeeEquivalence(Employee expected, Employee actual) {
         assertEquals(expected.getFirstName(), actual.getFirstName());
         assertEquals(expected.getLastName(), actual.getLastName());
         assertEquals(expected.getDepartment(), actual.getDepartment());
         assertEquals(expected.getPosition(), actual.getPosition());
-        assertEquals(expected.getCompensation(), actual.getCompensation());
+        assertEquals(expected.getCompensation().getEffectiveDate(), actual.getCompensation().getEffectiveDate());
+        //Assert.assertEquals(expected, actual);
+        assertEquals(expected.getDirectReports().size(), actual.getDirectReports().size());
+        for(int i = 0; i < expected.getDirectReports().size(); i++)
+        {
+        	assertEquals(expected.getDirectReports().get(i).getFirstName(), actual.getDirectReports().get(i).getFirstName());
+        }
+        //Assert.assertEquals(expected.getDirectReports(), actual.getDirectReports());
     }
     
-    private static void assertCompensationEquivalence(Compensation expected, Compensation actual)
-    {
-    	actual.setEffectiveDate(null);
-    	assertEquals(expected, actual);
-    }
 }

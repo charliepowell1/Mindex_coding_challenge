@@ -1,9 +1,8 @@
 package com.mindex.challenge.service.impl;
 
-import com.mindex.challenge.dao.CompensationRepository;
 import com.mindex.challenge.dao.EmployeeRepository;
 import com.mindex.challenge.data.Employee;
-import com.mindex.challenge.data.Compensation;
+import com.mindex.challenge.data.ReportStructure;
 import com.mindex.challenge.service.EmployeeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,8 +18,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Autowired
     private EmployeeRepository employeeRepository;
-    @Autowired
-    private CompensationRepository compensationRepository;
 
     @Override
     public Employee create(Employee employee) {
@@ -50,28 +47,6 @@ public class EmployeeServiceImpl implements EmployeeService {
         LOG.debug("Updating employee [{}]", employee);
 
         return employeeRepository.save(employee);
-    }
-    
-    @Override
-    public Compensation createComp(Compensation compensation, String id) {
-        LOG.debug("Creating compensation [{}]", compensation);
-        
-        
-        //employee.setCompensation(compensation);
-        
-
-        return compensationRepository.save(compensation);
-    }
-    
-    public Compensation readComp(String id) {
-    Compensation comp = compensationRepository.findByEmployeeId(id);
-    	
-    	if (comp == null) {
-            throw new RuntimeException("Invalid employeeId: " + id);
-        }
-    	//LOG.debug("WHY AINT THERE NOTHIN: " + comp.getCompensation());
-    	
-    	return comp;
     }
     
     public ArrayList<Employee> readReport(String id) {
@@ -105,6 +80,13 @@ public class EmployeeServiceImpl implements EmployeeService {
     	return finalList;
     	
     	
+    }
+    public ReportStructure readReportStructure(String id)
+    {
+    	ArrayList <Employee> reports = new ArrayList <Employee>();
+    	reports = readReport(id);
+    	ReportStructure rs = new ReportStructure(reports, reports.size());
+    	return rs;
     }
 //    public int helper(Employee employee, int count)
 //    {

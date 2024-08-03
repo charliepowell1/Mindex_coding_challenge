@@ -23,13 +23,13 @@
 <tr>
 <td>
 <div class="infoBox" id="tests">
-<div class="counter">2</div>
+<div class="counter">1</div>
 <p>tests</p>
 </div>
 </td>
 <td>
 <div class="infoBox" id="failures">
-<div class="counter">1</div>
+<div class="counter">0</div>
 <p>failures</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.575s</div>
+<div class="counter">0.556s</div>
 <p>duration</p>
 </div>
 </td>
@@ -50,8 +50,8 @@
 </div>
 </td>
 <td>
-<div class="infoBox failures" id="successRate">
-<div class="percent">50%</div>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
 <p>successful</p>
 </div>
 </td>
@@ -61,83 +61,13 @@
 <div id="tabs">
 <ul class="tabLinks">
 <li>
-<a href="#tab0">Failed tests</a>
+<a href="#tab0">Tests</a>
 </li>
 <li>
-<a href="#tab1">Tests</a>
-</li>
-<li>
-<a href="#tab2">Standard output</a>
+<a href="#tab1">Standard output</a>
 </li>
 </ul>
 <div id="tab0" class="tab">
-<h2>Failed tests</h2>
-<div class="test">
-<a name="testCreateReadCompensation"></a>
-<h3 class="failures">testCreateReadCompensation</h3>
-<span class="code">
-<pre>java.lang.AssertionError: expected:&lt;com.mindex.challenge.data.Compensation@6958d5d0&gt; but was:&lt;com.mindex.challenge.data.Compensation@314c28dc&gt;
-	at org.junit.Assert.fail(Assert.java:89)
-	at org.junit.Assert.failNotEquals(Assert.java:835)
-	at org.junit.Assert.assertEquals(Assert.java:120)
-	at org.junit.Assert.assertEquals(Assert.java:146)
-	at com.mindex.challenge.service.impl.EmployeeServiceImplTest.assertCompensationEquivalence(EmployeeServiceImplTest.java:104)
-	at com.mindex.challenge.service.impl.EmployeeServiceImplTest.testCreateReadCompensation(EmployeeServiceImplTest.java:90)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
-	at org.springframework.test.context.junit4.statements.RunBeforeTestExecutionCallbacks.evaluate(RunBeforeTestExecutionCallbacks.java:76)
-	at org.springframework.test.context.junit4.statements.RunAfterTestExecutionCallbacks.evaluate(RunAfterTestExecutionCallbacks.java:84)
-	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
-	at org.springframework.test.context.junit4.statements.RunBeforeTestMethodCallbacks.evaluate(RunBeforeTestMethodCallbacks.java:75)
-	at org.springframework.test.context.junit4.statements.RunAfterTestMethodCallbacks.evaluate(RunAfterTestMethodCallbacks.java:86)
-	at org.springframework.test.context.junit4.statements.SpringRepeat.evaluate(SpringRepeat.java:84)
-	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)
-	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:252)
-	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:97)
-	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
-	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
-	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
-	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
-	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
-	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:191)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.runTestClass(JUnitTestClassExecutor.java:112)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:58)
-	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:40)
-	at org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestClassProcessor.processTestClass(AbstractJUnitTestClassProcessor.java:60)
-	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:52)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
-	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
-	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33)
-	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94)
-	at jdk.proxy1/jdk.proxy1.$Proxy2.processTestClass(Unknown Source)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker$2.run(TestWorker.java:176)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker.executeAndMaintainThreadName(TestWorker.java:129)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:100)
-	at org.gradle.api.internal.tasks.testing.worker.TestWorker.execute(TestWorker.java:60)
-	at org.gradle.process.internal.worker.child.ActionExecutionWorker.execute(ActionExecutionWorker.java:56)
-	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:113)
-	at org.gradle.process.internal.worker.child.SystemApplicationClassLoaderWorker.call(SystemApplicationClassLoaderWorker.java:65)
-	at worker.org.gradle.process.internal.worker.GradleWorkerMain.run(GradleWorkerMain.java:69)
-	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)
-</pre>
-</span>
-</div>
-</div>
-<div id="tab1" class="tab">
 <h2>Tests</h2>
 <table>
 <thead>
@@ -148,22 +78,17 @@
 </tr>
 </thead>
 <tr>
-<td class="failures">testCreateReadCompensation</td>
-<td class="failures">0.017s</td>
-<td class="failures">failed</td>
-</tr>
-<tr>
 <td class="success">testCreateReadUpdateEmployee</td>
-<td class="success">0.558s</td>
+<td class="success">0.556s</td>
 <td class="success">passed</td>
 </tr>
 </table>
 </div>
-<div id="tab2" class="tab">
+<div id="tab1" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>15:30:02.119 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.mindex.challenge.service.impl.EmployeeServiceImplTest]: EmployeeServiceImplTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-15:30:02.199 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.mindex.challenge.ChallengeApplication for test class com.mindex.challenge.service.impl.EmployeeServiceImplTest
+<pre>20:17:41.638 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.mindex.challenge.service.impl.EmployeeServiceImplTest]: EmployeeServiceImplTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+20:17:41.719 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.mindex.challenge.ChallengeApplication for test class com.mindex.challenge.service.impl.EmployeeServiceImplTest
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -173,38 +98,36 @@
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v3.2.3)
 
-2024-08-02T15:30:02.436-04:00  INFO 2688 --- [    Test worker] c.m.c.s.impl.EmployeeServiceImplTest     : Starting EmployeeServiceImplTest using Java 17.0.12 with PID 2688 (started by charl in C:\Users\charl\Downloads\mindex-code-challenge)
-2024-08-02T15:30:02.436-04:00 DEBUG 2688 --- [    Test worker] c.m.c.s.impl.EmployeeServiceImplTest     : Running with Spring Boot v3.2.3, Spring v6.1.4
-2024-08-02T15:30:02.437-04:00  INFO 2688 --- [    Test worker] c.m.c.s.impl.EmployeeServiceImplTest     : No active profile set, falling back to 1 default profile: &quot;default&quot;
-2024-08-02T15:30:02.672-04:00  INFO 2688 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
-2024-08-02T15:30:02.696-04:00  INFO 2688 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 20 ms. Found 2 MongoDB repository interfaces.
-2024-08-02T15:30:03.071-04:00  INFO 2688 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 0 (http)
-2024-08-02T15:30:03.079-04:00  INFO 2688 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-08-02T15:30:03.079-04:00  INFO 2688 --- [    Test worker] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
-2024-08-02T15:30:03.128-04:00  INFO 2688 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-08-02T15:30:03.129-04:00  INFO 2688 --- [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 681 ms
-2024-08-02T15:30:03.326-04:00  INFO 2688 --- [    Test worker] de.bwaldvogel.mongo.MongoServer          : started MongoServer(port: 52009, ssl: false)
-2024-08-02T15:30:03.405-04:00  INFO 2688 --- [    Test worker] org.mongodb.driver.client                : MongoClient with metadata {&quot;driver&quot;: {&quot;name&quot;: &quot;mongo-java-driver|sync&quot;, &quot;version&quot;: &quot;4.11.1&quot;}, &quot;os&quot;: {&quot;type&quot;: &quot;Windows&quot;, &quot;name&quot;: &quot;Windows 11&quot;, &quot;architecture&quot;: &quot;amd64&quot;, &quot;version&quot;: &quot;10.0&quot;}, &quot;platform&quot;: &quot;Java/Oracle Corporation/17.0.12+8-LTS-286&quot;} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=null, transportSettings=null, streamFactoryFactory=null, commandListeners=[], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, CollectionCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.client.model.mql.ExpressionCodecProvider@935493d, com.mongodb.Jep395RecordCodecProvider@9b367c8, com.mongodb.KotlinCodecProvider@34c62fdf]}, loggerSettings=LoggerSettings{maxDocumentLength=1000}, clusterSettings={hosts=[127.0.0.1:52009], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='15 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=UNSPECIFIED, serverApi=null, autoEncryptionSettings=null, dnsClient=null, inetAddressResolver=null, contextProvider=null}
-2024-08-02T15:30:03.416-04:00  INFO 2688 --- [-server-worker2] d.b.mongo.wire.MongoWireProtocolHandler  : client [id: 0x156d337f, L:/127.0.0.1:52009 - R:/127.0.0.1:52010] connected
-2024-08-02T15:30:03.416-04:00  INFO 2688 --- [-server-worker1] d.b.mongo.wire.MongoWireProtocolHandler  : client [id: 0x82e184ef, L:/127.0.0.1:52009 - R:/127.0.0.1:52011] connected
-2024-08-02T15:30:03.454-04:00  INFO 2688 --- [127.0.0.1:52009] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=127.0.0.1:52009, type=STANDALONE, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=6, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=null, roundTripTimeNanos=48354800}
-2024-08-02T15:30:03.756-04:00  INFO 2688 --- [-server-worker3] d.b.mongo.wire.MongoWireProtocolHandler  : client [id: 0x064311da, L:/127.0.0.1:52009 - R:/127.0.0.1:52012] connected
-2024-08-02T15:30:03.779-04:00  INFO 2688 --- [-server-worker3] d.b.mongo.backend.AbstractMongoBackend   : created database test
-2024-08-02T15:30:03.782-04:00  INFO 2688 --- [-server-worker3] d.b.mongo.backend.AbstractMongoDatabase  : adding unique _id index for collection employee
-2024-08-02T15:30:03.786-04:00  INFO 2688 --- [-server-worker3] d.b.mongo.backend.AbstractMongoDatabase  : created collection test.employee
-2024-08-02T15:30:04.059-04:00  INFO 2688 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 52013 (http) with context path ''
-2024-08-02T15:30:04.065-04:00  INFO 2688 --- [    Test worker] c.m.c.s.impl.EmployeeServiceImplTest     : Started EmployeeServiceImplTest in 1.783 seconds (process running for 2.36)
-2024-08-02T15:30:04.554-04:00  INFO 2688 --- [o-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-08-02T15:30:04.554-04:00  INFO 2688 --- [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2024-08-02T15:30:04.555-04:00  INFO 2688 --- [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
-2024-08-02T15:30:04.577-04:00 DEBUG 2688 --- [o-auto-1-exec-1] c.m.c.controller.EmployeeController      : Received employee create request for [com.mindex.challenge.data.Employee@731b9572]
-2024-08-02T15:30:04.578-04:00 DEBUG 2688 --- [o-auto-1-exec-1] c.m.c.service.impl.EmployeeServiceImpl   : Creating employee [com.mindex.challenge.data.Employee@731b9572]
-2024-08-02T15:30:04.591-04:00 DEBUG 2688 --- [o-auto-1-exec-2] c.m.c.controller.EmployeeController      : Received employee create request for id [bc143a98-ddba-4bcf-ac63-ee1f793eaa9b]
-2024-08-02T15:30:04.591-04:00 DEBUG 2688 --- [o-auto-1-exec-2] c.m.c.service.impl.EmployeeServiceImpl   : Creating employee with id [bc143a98-ddba-4bcf-ac63-ee1f793eaa9b]
-2024-08-02T15:30:04.623-04:00 DEBUG 2688 --- [o-auto-1-exec-3] c.m.c.controller.EmployeeController      : Received employee create request for id [bc143a98-ddba-4bcf-ac63-ee1f793eaa9b] and employee [com.mindex.challenge.data.Employee@4aff0a87]
-2024-08-02T15:30:04.623-04:00 DEBUG 2688 --- [o-auto-1-exec-3] c.m.c.service.impl.EmployeeServiceImpl   : Updating employee [com.mindex.challenge.data.Employee@4aff0a87]
-2024-08-02T15:30:04.643-04:00 DEBUG 2688 --- [o-auto-1-exec-4] c.m.c.controller.EmployeeController      : Received employee create request for [com.mindex.challenge.data.Employee@3fd36698]
-2024-08-02T15:30:04.643-04:00 DEBUG 2688 --- [o-auto-1-exec-4] c.m.c.service.impl.EmployeeServiceImpl   : Creating employee [com.mindex.challenge.data.Employee@3fd36698]
+2024-08-02T20:17:41.965-04:00  INFO 2336 --- [    Test worker] c.m.c.s.impl.EmployeeServiceImplTest     : Starting EmployeeServiceImplTest using Java 17.0.12 with PID 2336 (started by charl in C:\Users\charl\Downloads\mindex-code-challenge)
+2024-08-02T20:17:41.965-04:00 DEBUG 2336 --- [    Test worker] c.m.c.s.impl.EmployeeServiceImplTest     : Running with Spring Boot v3.2.3, Spring v6.1.4
+2024-08-02T20:17:41.966-04:00  INFO 2336 --- [    Test worker] c.m.c.s.impl.EmployeeServiceImplTest     : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2024-08-02T20:17:42.202-04:00  INFO 2336 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2024-08-02T20:17:42.225-04:00  INFO 2336 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 21 ms. Found 2 MongoDB repository interfaces.
+2024-08-02T20:17:42.589-04:00  INFO 2336 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 0 (http)
+2024-08-02T20:17:42.596-04:00  INFO 2336 --- [    Test worker] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-02T20:17:42.596-04:00  INFO 2336 --- [    Test worker] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-08-02T20:17:42.642-04:00  INFO 2336 --- [    Test worker] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-02T20:17:42.643-04:00  INFO 2336 --- [    Test worker] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 665 ms
+2024-08-02T20:17:42.827-04:00  INFO 2336 --- [    Test worker] de.bwaldvogel.mongo.MongoServer          : started MongoServer(port: 54250, ssl: false)
+2024-08-02T20:17:42.902-04:00  INFO 2336 --- [    Test worker] org.mongodb.driver.client                : MongoClient with metadata {&quot;driver&quot;: {&quot;name&quot;: &quot;mongo-java-driver|sync&quot;, &quot;version&quot;: &quot;4.11.1&quot;}, &quot;os&quot;: {&quot;type&quot;: &quot;Windows&quot;, &quot;name&quot;: &quot;Windows 11&quot;, &quot;architecture&quot;: &quot;amd64&quot;, &quot;version&quot;: &quot;10.0&quot;}, &quot;platform&quot;: &quot;Java/Oracle Corporation/17.0.12+8-LTS-286&quot;} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=null, transportSettings=null, streamFactoryFactory=null, commandListeners=[], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, CollectionCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.client.model.mql.ExpressionCodecProvider@251a90ce, com.mongodb.Jep395RecordCodecProvider@4c4c7d6c, com.mongodb.KotlinCodecProvider@7f0766ef]}, loggerSettings=LoggerSettings{maxDocumentLength=1000}, clusterSettings={hosts=[127.0.0.1:54250], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='15 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=UNSPECIFIED, serverApi=null, autoEncryptionSettings=null, dnsClient=null, inetAddressResolver=null, contextProvider=null}
+2024-08-02T20:17:42.919-04:00  INFO 2336 --- [-server-worker1] d.b.mongo.wire.MongoWireProtocolHandler  : client [id: 0x7a1c5888, L:/127.0.0.1:54250 - R:/127.0.0.1:54251] connected
+2024-08-02T20:17:42.919-04:00  INFO 2336 --- [-server-worker2] d.b.mongo.wire.MongoWireProtocolHandler  : client [id: 0xa02f8acd, L:/127.0.0.1:54250 - R:/127.0.0.1:54252] connected
+2024-08-02T20:17:42.960-04:00  INFO 2336 --- [127.0.0.1:54250] org.mongodb.driver.cluster               : Monitor thread successfully connected to server with description ServerDescription{address=127.0.0.1:54250, type=STANDALONE, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=6, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=null, roundTripTimeNanos=54400600}
+2024-08-02T20:17:43.291-04:00  INFO 2336 --- [-server-worker3] d.b.mongo.wire.MongoWireProtocolHandler  : client [id: 0x21c65a0f, L:/127.0.0.1:54250 - R:/127.0.0.1:54253] connected
+2024-08-02T20:17:43.312-04:00  INFO 2336 --- [-server-worker3] d.b.mongo.backend.AbstractMongoBackend   : created database test
+2024-08-02T20:17:43.315-04:00  INFO 2336 --- [-server-worker3] d.b.mongo.backend.AbstractMongoDatabase  : adding unique _id index for collection employee
+2024-08-02T20:17:43.319-04:00  INFO 2336 --- [-server-worker3] d.b.mongo.backend.AbstractMongoDatabase  : created collection test.employee
+2024-08-02T20:17:43.615-04:00  INFO 2336 --- [    Test worker] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 54254 (http) with context path ''
+2024-08-02T20:17:43.623-04:00  INFO 2336 --- [    Test worker] c.m.c.s.impl.EmployeeServiceImplTest     : Started EmployeeServiceImplTest in 1.817 seconds (process running for 2.406)
+2024-08-02T20:17:44.110-04:00  INFO 2336 --- [o-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-08-02T20:17:44.110-04:00  INFO 2336 --- [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-08-02T20:17:44.111-04:00  INFO 2336 --- [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-08-02T20:17:44.132-04:00 DEBUG 2336 --- [o-auto-1-exec-1] c.m.c.controller.EmployeeController      : Received employee create request for [com.mindex.challenge.data.Employee@13d01314]
+2024-08-02T20:17:44.133-04:00 DEBUG 2336 --- [o-auto-1-exec-1] c.m.c.service.impl.EmployeeServiceImpl   : Creating employee [com.mindex.challenge.data.Employee@13d01314]
+2024-08-02T20:17:44.147-04:00 DEBUG 2336 --- [o-auto-1-exec-2] c.m.c.controller.EmployeeController      : Received employee create request for id [8672efce-ed99-4e1c-8841-f7f0c7b6778b]
+2024-08-02T20:17:44.147-04:00 DEBUG 2336 --- [o-auto-1-exec-2] c.m.c.service.impl.EmployeeServiceImpl   : Creating employee with id [8672efce-ed99-4e1c-8841-f7f0c7b6778b]
+2024-08-02T20:17:44.179-04:00 DEBUG 2336 --- [o-auto-1-exec-3] c.m.c.controller.EmployeeController      : Received employee create request for id [8672efce-ed99-4e1c-8841-f7f0c7b6778b] and employee [com.mindex.challenge.data.Employee@7ea2045b]
+2024-08-02T20:17:44.179-04:00 DEBUG 2336 --- [o-auto-1-exec-3] c.m.c.service.impl.EmployeeServiceImpl   : Updating employee [com.mindex.challenge.data.Employee@7ea2045b]
 </pre>
 </span>
 </div>
@@ -216,7 +139,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 8.6</a> at Aug 2, 2024, 3:30:05 PM</p>
+<a href="http://www.gradle.org">Gradle 8.6</a> at Aug 2, 2024, 8:17:44 PM</p>
 </div>
 </div>
 </body>
