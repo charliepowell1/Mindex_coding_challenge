@@ -1,4 +1,7 @@
 package com.mindex.challenge.data;
+/**
+ * ReportStructure class. Consists of list of employees under a certain employee and the count of those employees. 
+ */
 
 import java.util.List;
 

@@ -1,4 +1,7 @@
 package com.mindex.challenge.data;
+/**
+ * Compensation class. Consists of a date, salary and an id specific to an employee object
+ */
 
 public class Compensation {
 	private String effectiveDate;

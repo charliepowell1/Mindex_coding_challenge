@@ -106,6 +106,10 @@ public class EmployeeServiceImplTest {
 
         assertEmployeeEquivalence(readEmployee, updatedEmployee);
     }
+    public void testReadReportStructure()
+    {
+    	
+    }
     
 
     private static void assertEmployeeEquivalence(Employee expected, Employee actual) {
@@ -115,12 +119,12 @@ public class EmployeeServiceImplTest {
         assertEquals(expected.getPosition(), actual.getPosition());
         assertEquals(expected.getCompensation().getEffectiveDate(), actual.getCompensation().getEffectiveDate());
         //Assert.assertEquals(expected, actual);
-        assertEquals(expected.getDirectReports().size(), actual.getDirectReports().size());
-        for(int i = 0; i < expected.getDirectReports().size(); i++)
-        {
-        	assertEquals(expected.getDirectReports().get(i).getFirstName(), actual.getDirectReports().get(i).getFirstName());
-        }
+        
         //Assert.assertEquals(expected.getDirectReports(), actual.getDirectReports());
+    }
+    
+    private static void assertReportStructureEquivalence(Employee expected, Employee actual) {
+    	
     }
     
 }

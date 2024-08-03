@@ -48,10 +48,8 @@ public class EmployeeController {
     
     @GetMapping("/reportStructure/{id}")
     public ReportStructure readReportStructure(@PathVariable String id) {
-        LOG.debug("Received direct search request for id [{}]", id);
+        LOG.debug("Received report structure search request for id [{}]", id);
 
-       //ArrayList<Employee> employeeList = employeeService.readReport(id);
-        //ReportStructure rs = new ReportStructure(employeeList, employeeList.size());
         return employeeService.readReportStructure(id);
     }
     

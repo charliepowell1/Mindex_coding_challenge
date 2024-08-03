@@ -49,6 +49,11 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employeeRepository.save(employee);
     }
     
+    /**
+     * Logic handler for gathering all direct and indirect employees. 
+     * Recursively adds to a list of employees by checking if the given employee
+     * has direct reports. If so the method is called again to examine those direct reports.
+     */
     public ArrayList<Employee> readReport(String id) {
     	Employee employee = read(id);
     	
@@ -81,6 +86,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     	
     	
     }
+    /**
+     * Primary method called by controller. 
+     * Separate from the readReport structure to enable recursive addition to ArrayList.
+     * Mainly used to create ReportStructure object out of the list of reports.
+     */
     public ReportStructure readReportStructure(String id)
     {
     	ArrayList <Employee> reports = new ArrayList <Employee>();
