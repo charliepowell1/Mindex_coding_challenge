@@ -1,8 +1,8 @@
 package com.mindex.challenge.data;
 
 import java.util.List;
+import java.util.UUID;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Employee {
     private String employeeId;
@@ -15,7 +15,7 @@ public class Employee {
 
 
 	public Employee() {
-		
+		this.employeeId = UUID.randomUUID().toString();
     }
 	
 	public Compensation getCompensation() {
@@ -73,4 +73,18 @@ public class Employee {
     public void setDirectReports(List<Employee> directReports) {
         this.directReports = directReports;
     }
+    public int getDirectReportsSize()
+    {
+    	int size;
+    	if(directReports == null)
+    	{
+    		size = 0;
+    	}
+    	else
+    	{
+    		size = directReports.size();
+    	}
+    	return size;
+    }
+    
 }

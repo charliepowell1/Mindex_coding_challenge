@@ -45,7 +45,6 @@ public class EmployeeController {
         return employeeService.update(employee);
     }
     
-    
     @GetMapping("/reportStructure/{id}")
     public ReportStructure readReportStructure(@PathVariable String id) {
         LOG.debug("Received report structure search request for id [{}]", id);

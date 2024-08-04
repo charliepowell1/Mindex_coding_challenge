@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -23,7 +24,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     public Employee create(Employee employee) {
         LOG.debug("Creating employee [{}]", employee);
 
-        employee.setEmployeeId(UUID.randomUUID().toString());
+        //employee.setEmployeeId(UUID.randomUUID().toString());
         employeeRepository.insert(employee);
 
         return employee;
@@ -54,14 +55,14 @@ public class EmployeeServiceImpl implements EmployeeService {
      * Recursively adds to a list of employees by checking if the given employee
      * has direct reports. If so the method is called again to examine those direct reports.
      */
-    public ArrayList<Employee> readReport(String id) {
+    public List<Employee> readReport(String id) {
     	Employee employee = read(id);
     	
     	if (employee == null) {
             throw new RuntimeException("Invalid employeeId: " + id);
         }
-    	LOG.debug("DIRECTOOOOOO: " + employee.getDirectReports());
-    	ArrayList<Employee> finalList = new ArrayList<Employee>();
+    	//LOG.debug("DIRECTOOOOOO: " + employee.getDirectReports());
+    	List<Employee> finalList = new ArrayList<Employee>();
     	
     		if(employee.getDirectReports() == null) {
     			finalList.add(employee);
@@ -93,8 +94,13 @@ public class EmployeeServiceImpl implements EmployeeService {
      */
     public ReportStructure readReportStructure(String id)
     {
-    	ArrayList <Employee> reports = new ArrayList <Employee>();
+    	List <Employee> reports = new ArrayList <Employee>();
     	reports = readReport(id);
+    	int size = reports.size();
+    	if(size == 1)
+    	{
+    		size = 0;
+    	}
     	ReportStructure rs = new ReportStructure(reports, reports.size());
     	return rs;
     }
