@@ -7,8 +7,6 @@ public class Compensation {
 	private String effectiveDate;
 	private String salary;
 	private String employeeId;
-	
-	
 
 	public Compensation() {
 		

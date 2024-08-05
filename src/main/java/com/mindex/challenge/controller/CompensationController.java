@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Compensation Controller. Can be used to add compensation data to an existing employee or read from an existing employee.
+ */
 @RestController
 public class CompensationController {
     private static final Logger LOG = LoggerFactory.getLogger(CompensationController.class);
@@ -23,6 +26,7 @@ public class CompensationController {
     public Compensation createComp(@RequestBody Compensation compensation, @PathVariable String id) {
     	LOG.debug("Received compensation create request for id [{}] and employee [{}]", compensation, id);
 
+    	compensation.setEmployeeId(id);
         return compensationService.createComp(compensation, id);
     }
     

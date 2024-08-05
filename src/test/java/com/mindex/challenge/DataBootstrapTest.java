@@ -25,10 +25,14 @@ public class DataBootstrapTest {
     public void test() {
         Employee employee = employeeRepository.findByEmployeeId("16a596ae-edd3-4847-99fe-c4518e82c86f");
         assertNotNull(employee);
-        /**assertEquals("John", employee.getFirstName());
+        assertEquals("John", employee.getFirstName());
         assertEquals("Lennon", employee.getLastName());
         assertEquals("Development Manager", employee.getPosition());
-        assertEquals("Engineering", employee.getDepartment());**/
+        assertEquals("Engineering", employee.getDepartment());
+        
+        /**
+         * For some reason the data will not map to compensation. The exact same line in the service layer works. Will have to continue on this but that's why it is commented out.
+         */
         
         /**Compensation compensation = compensationRepository.findByEmployeeId("16a596ae-edd3-4847-99fe-c4518e82c86f");
         assertNotNull(compensation);

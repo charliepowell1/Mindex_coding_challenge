@@ -14,6 +14,7 @@
       }
     ],
 	"compensation" : {
+		"employeeId" : "16a596ae-edd3-4847-99fe-c4518e82c86f",
 		"effectiveDate" : "01/01/2024",
 		"salary" : "$1"
 	}
@@ -23,7 +24,12 @@
     "firstName" : "Paul",
     "lastName" : "McCartney",
     "position" : "Developer I",
-    "department" : "Engineering"
+    "department" : "Engineering",
+	"directReports" : [
+	      {
+	        "employeeId" : "62c1084e-6e34-4630-93fd-9153afb65309"
+	      }
+		  ]
   },
   {
     "employeeId" : "03aa1462-ffa9-4978-901b-7c001562cf6f",

@@ -61,7 +61,6 @@ public class EmployeeServiceImpl implements EmployeeService {
     	if (employee == null) {
             throw new RuntimeException("Invalid employeeId: " + id);
         }
-    	//LOG.debug("DIRECTOOOOOO: " + employee.getDirectReports());
     	List<Employee> finalList = new ArrayList<Employee>();
     	
     		if(employee.getDirectReports() == null) {
@@ -94,34 +93,17 @@ public class EmployeeServiceImpl implements EmployeeService {
      */
     public ReportStructure readReportStructure(String id)
     {
+    	Employee employee = read(id);
     	List <Employee> reports = new ArrayList <Employee>();
     	reports = readReport(id);
     	int size = reports.size();
-    	if(size == 1)
+    	if(size == 1 && (employee.getDirectReportsSize() == 0))
     	{
     		size = 0;
+    		reports = null;
     	}
-    	ReportStructure rs = new ReportStructure(reports, reports.size());
+    	ReportStructure rs = new ReportStructure(employee, reports, size);
     	return rs;
     }
-//    public int helper(Employee employee, int count)
-//    {
-//    	
-//    	/**if(employee.getDirectReports() == null || employee.getDirectReports().isEmpty()) {
-//    		return 0;
-//    		//return count;
-//    	}
-//    	for(Employee emp : employee.getDirectReports())
-//    	{
-//    		//emp = read(employee.getEmployeeId());
-//    		count++;
-//    		count += helper(emp, count);
-//    	}
-//    	
-//    	return count;**/
-//    	return 0;
-//    }
-   
-    
    
 }

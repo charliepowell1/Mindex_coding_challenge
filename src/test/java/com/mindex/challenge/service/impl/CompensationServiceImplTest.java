@@ -44,12 +44,17 @@ public class CompensationServiceImplTest {
     	Compensation testComp = new Compensation();
     	testComp.setEffectiveDate("01/01/2024");
     	testComp.setSalary("$1");
-    	//testComp.setEmployeeId("16a596ae-edd3-4847-99fe-c4518e82c86f");
+    	testComp.setEmployeeId("16a596ae-edd3-4847-99fe-c4518e82c86f");
     	
-    	Compensation createdComp = restTemplate.postForEntity(compensationIdUrl, testComp.getEmployeeId(), Compensation.class).getBody();
+    	//service creation test
+    	Compensation serviceComp = compensationService.createComp(testComp, compensationIdUrl);
     	
-    	assertNotNull(createdComp.getEmployeeId());
-        assertCompensationEquivalence(testComp, createdComp);
+    	assertNotNull(serviceComp.getEmployeeId());
+        assertCompensationEquivalence(testComp, serviceComp);
+        
+        //service read test
+        Compensation readServiceComp = compensationService.readComp(testComp.getEmployeeId());
+        assertCompensationEquivalence(testComp, readServiceComp);
     }
     
     
@@ -57,7 +62,8 @@ public class CompensationServiceImplTest {
     
     private static void assertCompensationEquivalence(Compensation expected, Compensation actual)
     {
-    	//actual.setEffectiveDate(null);
-    	assertEquals(expected, actual);
+    	assertEquals(expected.getEffectiveDate(), actual.getEffectiveDate());
+    	assertEquals(expected.getSalary(), actual.getSalary());
+    	assertEquals(expected.getEmployeeId(), actual.getEmployeeId());
     }
 }

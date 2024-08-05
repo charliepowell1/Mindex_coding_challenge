@@ -19,6 +19,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertIterableEquals;
 
 import org.junit.Assert;
@@ -98,30 +99,55 @@ public class EmployeeServiceImplTest {
         Employee createdEmployee = restTemplate.postForEntity(employeeUrl, testEmployee, Employee.class).getBody();
         Employee createdEmployee2 = restTemplate.postForEntity(employeeUrl, testEmployee2, Employee.class).getBody();
         Employee createdEmployee3 = restTemplate.postForEntity(employeeUrl, testEmployee3, Employee.class).getBody();
-
         assertNotNull(createdEmployee.getEmployeeId());
+        assertNotNull(createdEmployee2.getEmployeeId());
+        assertNotNull(createdEmployee3.getEmployeeId());
         assertEmployeeEquivalence(testEmployee, createdEmployee);
         assertEmployeeEquivalence(testEmployee2, createdEmployee2);
         assertEmployeeEquivalence(testEmployee3, createdEmployee3);
         
+        
         // Read checks
         Employee readEmployee = restTemplate.getForEntity(employeeIdUrl, Employee.class, createdEmployee.getEmployeeId()).getBody();
+        Employee readEmployee2 = restTemplate.getForEntity(employeeIdUrl, Employee.class, createdEmployee2.getEmployeeId()).getBody();
+        Employee readEmployee3 = restTemplate.getForEntity(employeeIdUrl, Employee.class, createdEmployee3.getEmployeeId()).getBody();
         assertEquals(createdEmployee.getEmployeeId(), readEmployee.getEmployeeId());
-        assertEmployeeEquivalence(createdEmployee, readEmployee);
+        assertEquals(createdEmployee2.getEmployeeId(), readEmployee2.getEmployeeId());
+        assertEquals(createdEmployee3.getEmployeeId(), readEmployee3.getEmployeeId());
+        
+        //Read via service layer checks
+        Employee serviceEmployee  = employeeService.read(testEmployee.getEmployeeId());
+        Employee serviceEmployeeb  = employeeService.read(createdEmployee.getEmployeeId());
+        Employee serviceEmployee2  = employeeService.read(testEmployee2.getEmployeeId());
+        Employee serviceEmployee2b  = employeeService.read(createdEmployee2.getEmployeeId());
+        Employee serviceEmployee3  = employeeService.read(testEmployee3.getEmployeeId());
+        Employee serviceEmployee3b  = employeeService.read(createdEmployee3.getEmployeeId());
+        assertEmployeeEquivalence(testEmployee, serviceEmployee);
+        assertEmployeeEquivalence(createdEmployee, serviceEmployeeb);
+        assertEmployeeEquivalence(testEmployee2, serviceEmployee2);
+        assertEmployeeEquivalence(createdEmployee2, serviceEmployee2b);
+        assertEmployeeEquivalence(testEmployee3, serviceEmployee3);
+        assertEmployeeEquivalence(createdEmployee3, serviceEmployee3b);
 
         //Read Report Structure Checks
-        ReportStructure createdReportStructure = new ReportStructure(createdEmployee.getDirectReports(), createdEmployee.getDirectReportsSize());
+        ReportStructure testReportStructure = new ReportStructure(createdEmployee, createdEmployee.getDirectReports(), createdEmployee.getDirectReportsSize());
+        ReportStructure testReportStructure2 = new ReportStructure(createdEmployee2, createdEmployee2.getDirectReports(), createdEmployee2.getDirectReportsSize());
+        ReportStructure testReportStructure3 = new ReportStructure(createdEmployee3, createdEmployee3.getDirectReports(), createdEmployee3.getDirectReportsSize());
         ReportStructure readReportStructure = restTemplate.getForEntity(reportIdUrl, ReportStructure.class, createdEmployee.getEmployeeId()).getBody();
-        
-        ReportStructure createdReportStructure2 = new ReportStructure(createdEmployee2.getDirectReports(), createdEmployee2.getDirectReportsSize());
         ReportStructure readReportStructure2 = restTemplate.getForEntity(reportIdUrl, ReportStructure.class, createdEmployee2.getEmployeeId()).getBody();
-        
-        ReportStructure createdReportStructure3 = new ReportStructure(createdEmployee3.getDirectReports(), createdEmployee3.getDirectReportsSize());
         ReportStructure readReportStructure3  = restTemplate.getForEntity(reportIdUrl, ReportStructure.class, createdEmployee3.getEmployeeId()).getBody();
+        assertReportStructureEquivalence(readReportStructure, testReportStructure);
+        assertReportStructureEquivalence(readReportStructure2, testReportStructure2);
+        assertReportStructureEquivalence(readReportStructure3, testReportStructure3);
         
-        assertReportStructureEquivalence(readReportStructure, createdReportStructure);
-        assertReportStructureEquivalence(readReportStructure2, createdReportStructure2);
-        assertReportStructureEquivalence(readReportStructure3, createdReportStructure3);
+        
+        //Read report structure via service layer checks
+        ReportStructure serviceReportStructure = employeeService.readReportStructure(testReportStructure.getEmployee().getEmployeeId());
+        ReportStructure serviceReportStructure2 = employeeService.readReportStructure(testReportStructure2.getEmployee().getEmployeeId());
+        ReportStructure serviceReportStructure3 = employeeService.readReportStructure(testReportStructure3.getEmployee().getEmployeeId());
+        assertReportStructureEquivalence(serviceReportStructure, testReportStructure);
+        assertReportStructureEquivalence(serviceReportStructure2, testReportStructure2);
+        assertReportStructureEquivalence(serviceReportStructure3, testReportStructure3);
 
         // Update checks
         readEmployee.setPosition("Development Manager");
@@ -149,16 +175,25 @@ public class EmployeeServiceImplTest {
         assertEquals(expected.getCompensation().getSalary(), actual.getCompensation().getSalary());
     }
     
-    private static void assertReportStructureEquivalence(ReportStructure expected, ReportStructure actual) {
+    /**
+     * Compares each report structures list of employees and then compares the count for each.
+     * @param expected
+     * @param actual
+     */
+    private void assertReportStructureEquivalence(ReportStructure expected, ReportStructure actual) {
     	int index = 0;
-    	
-    	for(Employee empExpected : expected.getEmployee()) {
-    		//Employee empActual = actual.getEmployee().indexOf(index);
-    		assertEmployeeEquivalence(empExpected, actual.getEmployee().get(index));
-    		index++;
+    	if(expected.getReports() == null)
+    	{
+    		assertNull(actual.getReports());
     	}
-    	//assertIterableEquals(expected.getEmployee(), actual.getEmployee());
-    	assertEquals(expected.getNumberOfReports(), actual.getNumberOfReports());
+    	else
+    	{
+    		for(Employee empExpected : expected.getReports()) {
+        		assertEmployeeEquivalence(empExpected, actual.getReports().get(index));
+        		index++;
+        	}
+        	assertEquals(expected.getNumberOfReports(), actual.getNumberOfReports());
+    	}
     	
     }
     
